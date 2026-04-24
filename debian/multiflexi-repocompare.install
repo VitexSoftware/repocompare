@@ -1,1 +1,3 @@
 multiflexi/*.multiflexi.app.json usr/lib/multiflexi-repocompare/multiflexi/
+multiflexi/*.svg usr/share/multiflexi-web/images/
+

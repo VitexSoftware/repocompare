@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>io.github.VitexSoftware.repocompare</id>
+
+  <name>repocompare</name>
+  <summary>Compare Debian package lists between two APT repositories</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      repocompare is a small CLI tool to compare package names and versions between
+      two APT repositories. Useful for auditing and repository synchronisation verification.
+    </p>
+    <p>
+      It outputs a summary and a JSON payload describing missing and differing packages,
+      with optional coloured output when the rich library is available.
+    </p>
+  </description>
+
+  <icon type="stock">io.github.VitexSoftware.repocompare</icon>
+
+  <url type="homepage">https://github.com/VitexSoftware/repocompare</url>
+  <url type="bugtracker">https://github.com/VitexSoftware/repocompare/issues</url>
+
+  <provides>
+    <binary>repocompare</binary>
+  </provides>
+
+  <categories>
+    <category>System</category>
+    <category>PackageManager</category>
+  </categories>
+
+  <developer>
+    <name>Vitex Software</name>
+  </developer>
+
+  <releases>
+    <release version="0.1.0" date="2026-04-24">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+
+  <content_rating type="oars-1.1"/>
+</component>

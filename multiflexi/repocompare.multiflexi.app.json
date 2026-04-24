@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/VitexSoftware/php-vitexsoftware-multiflexi-core/refs/heads/main/schema/application.json",
   "schemaVersion": "3.0.0",
   "version": "0.1.0",
-  "uuid": "e4b9f2d3-1a9f-4aeb-9e3b-1c9e3c7b6a8f",
+  "uuid": "6e26be00-7099-43c2-99c8-8281ec4c3d21",
   "name": {
     "en": "RepoCompare",
     "cs": "RepoCompare"

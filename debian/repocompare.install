@@ -7,3 +7,9 @@ __main__.py usr/lib/python3/dist-packages/
 debian/usr/bin/repocompare usr/bin/
 
 # Manpages are handled by dh_installman via debian/repocompare.manpages
+
+# AppStream metainfo
+debian/usr/share/metainfo/io.github.VitexSoftware.repocompare.metainfo.xml usr/share/metainfo/
+
+# Application icon
+debian/usr/share/icons/hicolor/scalable/apps/io.github.VitexSoftware.repocompare.svg usr/share/icons/hicolor/scalable/apps/
