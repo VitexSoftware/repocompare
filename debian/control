@@ -12,3 +12,11 @@ Depends: ${misc:Depends}, ${python3:Depends}
 Description: Compare Debian package metadata between two APT repositories
  A small CLI tool to compare package names and versions between two APT
  repositories. Useful for auditing and repo sync verification.
+
+Package: multiflexi-repocompare
+Architecture: all
+Depends: ${misc:Depends}, repocompare, multiflexi-cli
+Description: Multiflexi application manifest for repocompare
+ Provides a Multiflexi application JSON manifest that registers `repocompare`
+ with the Multiflexi runner. Installs metadata into
+ /usr/lib/multiflexi-repocompare/multiflexi/.

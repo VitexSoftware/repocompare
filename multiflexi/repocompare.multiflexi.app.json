@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/VitexSoftware/php-vitexsoftware-multiflexi-core/refs/heads/main/schema/application.json",
+  "schemaVersion": "3.0.0",
+  "version": "0.1.0",
+  "uuid": "e4b9f2d3-1a9f-4aeb-9e3b-1c9e3c7b6a8f",
+  "name": {
+    "en": "RepoCompare",
+    "cs": "RepoCompare"
+  },
+  "description": {
+    "en": "Compare Debian package lists and versions between two APT repositories",
+    "cs": "Porovnání seznamů a verzí Debian balíčků mezi dvěma APT repozitáři"
+  },
+  "tags": [
+    "Debian",
+    "Repo",
+    "Compare"
+  ],
+  "requirements": [],
+  "homepage": "https://github.com/VitexSoftware/repocompare",
+  "executable": "repocompare",
+  "environment": {
+    "REPO_A": {
+      "type": "string",
+      "description": {"en": "Base URL for repo A"},
+      "defval": "https://repo.vitexsoftware.com/",
+      "required": false,
+      "category": "Network"
+    },
+    "REPO_B": {
+      "type": "string",
+      "description": {"en": "Base URL for repo B"},
+      "defval": "https://repo.multiflexi.eu/",
+      "required": false,
+      "category": "Network"
+    },
+    "DIST": {
+      "type": "string",
+      "defval": "bookworm",
+      "required": false,
+      "category": "Options"
+    },
+    "COMPONENT": {
+      "type": "string",
+      "defval": "main",
+      "required": false,
+      "category": "Options"
+    },
+    "ARCH": {
+      "type": "string",
+      "defval": "amd64",
+      "required": false,
+      "category": "Options"
+    }
+  }
+}
