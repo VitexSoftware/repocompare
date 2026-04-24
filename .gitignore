@@ -19,3 +19,7 @@ debian/repocompare.substvars
 debian/.debhelper/
 debian/repocompare/
 
+debian/multiflexi-repocompare.substvars
+debian/files
+debian/multiflexi-repocompare/
+
