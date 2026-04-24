@@ -1,0 +1,60 @@
+." Manpage for repocompare
+.TH REPOCOMPARE 1 "24 April 2026" "repocompare 0.1.0" "User Commands"
+.SH NAME
+repocompare \- Compare Debian package metadata between two APT repositories
+.SH SYNOPSIS
+.B repocompare
+.RI [ options ]
+.SH DESCRIPTION
+repocompare fetches and parses the Packages files from two APT repositories and compares package existence and version information.
+
+.SH OPTIONS
+.TP
+.B \-h, \--help
+Show help and exit.
+.TP
+.B \--repo-a URL
+Base URL for repo A (default from environment variable REPO_A).
+.TP
+.B \--repo-b URL
+Base URL for repo B (default from environment variable REPO_B).
+.TP
+.B \--dist CODENAME
+Distribution codename (e.g. bookworm).
+.TP
+.B \--component COMPONENT
+Component name (e.g. main).
+.TP
+.B \--arch ARCH
+Architecture (e.g. amd64).
+.TP
+.B \--output FORMAT
+Output format: text, json, or both (default: both).
+
+.SH ENVIRONMENT
+.TP
+.B REPO_A, REPO_B
+Default repository base URLs (can be set in .env or environment).
+.TP
+.B DIST
+Default distribution codename.
+.TP
+.B COMPONENT
+Default component name.
+.TP
+.B ARCH
+Default architecture.
+
+.SH EXAMPLES
+.TP
+.B repocompare --repo-a https://repo.example.org/ --repo-b https://repo2.example.org/ --dist bookworm --arch amd64
+Compare the two repositories and print a summary and JSON output.
+
+.SH SEE ALSO
+.BR python3 (1)
+
+.SH AUTHOR
+Vitex Software <packaging@vitexsoftware.com>
+
+.SH COPYRIGHT
+MIT License

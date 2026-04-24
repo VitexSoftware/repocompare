@@ -1,0 +1,21 @@
+.env
+__pycache__
+.venv/
+
+# Packaging and build artifacts
+build/
+dist/
+*.egg-info/
+*.deb
+debian/*.deb
+
+# Python test / cache
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+debian/debhelper-build-stamp
+debian/repocompare.substvars
+debian/.debhelper/
+debian/repocompare/
+

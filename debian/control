@@ -1,0 +1,14 @@
+Source: repocompare
+Section: utils
+Priority: optional
+Maintainer: Vitex Software <packaging@vitexsoftware.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+
+Package: repocompare
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Compare Debian package metadata between two APT repositories
+ A small CLI tool to compare package names and versions between two APT
+ repositories. Useful for auditing and repo sync verification.

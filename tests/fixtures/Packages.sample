@@ -1,0 +1,7 @@
+Package: samplepkg
+Version: 1.0.0
+Architecture: all
+
+Package: otherpkg
+Version: 2.3.4
+Architecture: amd64

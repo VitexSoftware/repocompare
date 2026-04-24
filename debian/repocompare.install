@@ -1,0 +1,9 @@
+
+# Install the Python package directory into the system site-packages
+repocompare usr/lib/python3/dist-packages/
+__main__.py usr/lib/python3/dist-packages/
+
+# Install a small wrapper script to `/usr/bin` so the console command is available
+debian/usr/bin/repocompare usr/bin/
+
+# Manpages are handled by dh_installman via debian/repocompare.manpages
