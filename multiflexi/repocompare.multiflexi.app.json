@@ -54,6 +54,20 @@
       "defval": "amd64",
       "required": false,
       "category": "Behavior"
+    },
+    "RESULT_FILE": {
+      "type": "string",
+      "description": {"en": "Path to file where JSON result is saved (stdout if empty)", "cs": "Cesta k souboru pro uložení JSON výstupu (prázdné = stdout)"},
+      "defval": "",
+      "required": false,
+      "category": "Output"
+    },
+    "REPOCOMPARE_DISTS": {
+      "type": "string",
+      "description": {"en": "Space or comma-separated list of distribution codenames to compare (used by Zabbix LLD discovery)", "cs": "Mezerami nebo čárkami oddělený seznam kódových názvů distribucí pro porovnání (používá Zabbix LLD discovery)"},
+      "defval": "bookworm trixie forky jammy noble raccoon",
+      "required": false,
+      "category": "Behavior"
     }
   }
 }

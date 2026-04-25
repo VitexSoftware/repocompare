@@ -1,0 +1,330 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: b4f5a6c7-d8e9-4f0a-b1c2-d3e4f5a6b7c8
+      name: Templates/Applications
+
+  templates:
+    - uuid: a3e4f5b6-c7d8-4e9f-a0b1-c2d3e4f5a6b7
+      template: RepoCompare
+      name: RepoCompare
+      description: |
+        Monitors which packages in the testing/staging repository (Repo A) need to be rebuilt
+        for the production repository (Repo B), across multiple distribution codenames.
+
+        Repo A = testing/staging  |  Repo B = production
+        Packages to rebuild  = different_versions + missing_in_b per distribution.
+
+        Requires repocompare installed on the monitored host and the UserParameter
+        from zabbix/zabbix_agent2.conf.d/repocompare.conf deployed to the agent.
+        Set Timeout=30 in zabbix_agent2.conf (repo fetches require network I/O).
+      groups:
+        - name: Templates/Applications
+
+      macros:
+        - macro: '{$REPO_A}'
+          value: 'https://repo.vitexsoftware.com/'
+          description: 'Testing/staging repository base URL'
+        - macro: '{$REPO_B}'
+          value: 'https://repo.multiflexi.eu/'
+          description: 'Production repository base URL'
+        - macro: '{$COMPONENT}'
+          value: main
+          description: 'Repository component (e.g. main)'
+        - macro: '{$ARCH}'
+          value: amd64
+          description: 'Target architecture'
+        - macro: '{$REPOCOMPARE_DISTS}'
+          value: 'bookworm,trixie,forky,jammy,noble,raccoon'
+          description: 'Comma-separated list of distribution codenames to monitor'
+        - macro: '{$REPOCOMPARE_DIFF_WARN}'
+          value: '0'
+          description: 'Trigger: warn when packages with differing versions exceed this count'
+        - macro: '{$REPOCOMPARE_MISSING_B_WARN}'
+          value: '0'
+          description: 'Trigger: warn when packages missing in production exceed this count'
+
+      discovery_rules:
+        - uuid: 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d
+          name: 'Distribution discovery'
+          key: 'repocompare.dist.discovery[{$REPOCOMPARE_DISTS}]'
+          delay: 1d
+          lifetime: 7d
+          description: |
+            Discovers distribution codenames from the {$REPOCOMPARE_DISTS} macro.
+            Runs once per day since the distribution list rarely changes.
+            Each discovered {#DIST} gets its own set of monitoring items.
+
+          item_prototypes:
+            - uuid: 2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e
+              name: 'RepoCompare [{#DIST}]: raw JSON result'
+              key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
+              delay: 1h
+              history: 7d
+              trends: '0'
+              value_type: TEXT
+              description: |
+                Full JSON output from repocompare for distribution {#DIST}.
+                Fields: missing_in_a, missing_in_b, same_versions, different_versions.
+                All dependent items below are extracted from this master item.
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+            - uuid: 3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f
+              name: 'RepoCompare [{#DIST}]: packages to rebuild (different versions)'
+              type: DEPENDENT
+              key: 'repocompare.different_versions[{#DIST}]'
+              delay: '0'
+              history: 90d
+              value_type: UNSIGNED
+              units: packages
+              description: |
+                Packages present in both repos with different versions.
+                These exist in testing but production has a different (usually older) version
+                — a rebuild/promotion is needed.
+              master_item:
+                key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - '$.different_versions.length()'
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+            - uuid: 4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a
+              name: 'RepoCompare [{#DIST}]: packages missing in production'
+              type: DEPENDENT
+              key: 'repocompare.missing_in_b[{#DIST}]'
+              delay: '0'
+              history: 90d
+              value_type: UNSIGNED
+              units: packages
+              description: |
+                Packages present in testing (Repo A) but absent from production (Repo B).
+                These have never been promoted to production yet.
+              master_item:
+                key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - '$.missing_in_b.length()'
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+            - uuid: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
+              name: 'RepoCompare [{#DIST}]: packages missing in testing'
+              type: DEPENDENT
+              key: 'repocompare.missing_in_a[{#DIST}]'
+              delay: '0'
+              history: 90d
+              value_type: UNSIGNED
+              units: packages
+              description: 'Packages in production (Repo B) that do not exist in testing (Repo A).'
+              master_item:
+                key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - '$.missing_in_a.length()'
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+            - uuid: 6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c
+              name: 'RepoCompare [{#DIST}]: packages in sync'
+              type: DEPENDENT
+              key: 'repocompare.same_versions[{#DIST}]'
+              delay: '0'
+              history: 90d
+              value_type: UNSIGNED
+              units: packages
+              description: 'Packages with identical versions in both repos for {#DIST}.'
+              master_item:
+                key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - '$.same_versions.length()'
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+            - uuid: 7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d
+              name: 'RepoCompare [{#DIST}]: packages to rebuild (total)'
+              type: DEPENDENT
+              key: 'repocompare.rebuild_total[{#DIST}]'
+              delay: '0'
+              history: 90d
+              value_type: UNSIGNED
+              units: packages
+              description: |
+                Total packages requiring attention: different_versions + missing_in_b.
+                This is the key metric for "how much work is left to sync testing → production".
+              master_item:
+                key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
+              preprocessing:
+                - type: JAVASCRIPT
+                  parameters:
+                    - |
+                      var d = JSON.parse(value);
+                      return d.different_versions.length + d.missing_in_b.length;
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+          graph_prototypes:
+            - uuid: 8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e
+              name: 'RepoCompare [{#DIST}]: rebuild backlog'
+              graph_items:
+                - sortorder: '0'
+                  color: CC0000
+                  drawtype: FILLED_REGION
+                  item:
+                    host: RepoCompare
+                    key: 'repocompare.rebuild_total[{#DIST}]'
+                - sortorder: '1'
+                  color: FF6600
+                  item:
+                    host: RepoCompare
+                    key: 'repocompare.different_versions[{#DIST}]'
+                - sortorder: '2'
+                  color: FFAA00
+                  item:
+                    host: RepoCompare
+                    key: 'repocompare.missing_in_b[{#DIST}]'
+                - sortorder: '3'
+                  color: 00AA44
+                  item:
+                    host: RepoCompare
+                    key: 'repocompare.same_versions[{#DIST}]'
+
+          trigger_prototypes:
+            - uuid: 9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f
+              expression: 'last(/RepoCompare/repocompare.different_versions[{#DIST}])>{$REPOCOMPARE_DIFF_WARN}'
+              name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} package(s) need version rebuild'
+              priority: WARNING
+              description: |
+                Packages exist in both repos for {#DIST} but with differing versions.
+                Testing (Repo A) is ahead of production (Repo B) — rebuild/promotion needed.
+                Threshold: {$REPOCOMPARE_DIFF_WARN}
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+                - tag: action
+                  value: rebuild
+
+            - uuid: 0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a
+              expression: 'last(/RepoCompare/repocompare.missing_in_b[{#DIST}])>{$REPOCOMPARE_MISSING_B_WARN}'
+              name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} package(s) not yet in production'
+              priority: WARNING
+              description: |
+                Packages present in testing (Repo A) for {#DIST} are completely absent from production (Repo B).
+                These packages have never been promoted.
+                Threshold: {$REPOCOMPARE_MISSING_B_WARN}
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+                - tag: action
+                  value: promote
+
+            - uuid: 1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b
+              expression: 'last(/RepoCompare/repocompare.missing_in_a[{#DIST}])>0'
+              name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} production package(s) missing from testing'
+              priority: INFO
+              description: |
+                Packages in production (Repo B) for {#DIST} are absent from testing (Repo A).
+                This may indicate packages that were removed from testing or were added directly to production.
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+            - uuid: 2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c
+              expression: 'nodata(/RepoCompare/repocompare.different_versions[{#DIST}],2h)=1'
+              name: 'RepoCompare [{#DIST}]: no data for 2 hours'
+              priority: AVERAGE
+              description: 'The repocompare check for {#DIST} has stopped returning data. Verify repocompare is installed and the Zabbix agent UserParameter is configured correctly.'
+              tags:
+                - tag: component
+                  value: repocompare
+                - tag: dist
+                  value: '{#DIST}'
+
+      dashboards:
+        - uuid: 3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d
+          name: 'RepoCompare — Packages to Rebuild'
+          pages:
+            - name: 'Overview'
+              widgets:
+                - type: GRAPHPROTOTYPE
+                  name: 'Rebuild backlog per distribution'
+                  x: '0'
+                  y: '0'
+                  width: '24'
+                  height: '6'
+                  fields:
+                    - type: INTEGER
+                      name: columns
+                      value: '3'
+                    - type: INTEGER
+                      name: rows
+                      value: '2'
+                    - type: GRAPH_PROTOTYPE
+                      name: graphid
+                      value:
+                        host: RepoCompare
+                        name: 'RepoCompare [{#DIST}]: rebuild backlog'
+
+            - name: 'Problems'
+              widgets:
+                - type: PROBLEMS
+                  name: 'Active rebuild alerts'
+                  x: '0'
+                  y: '0'
+                  width: '24'
+                  height: '8'
+                  fields:
+                    - type: INTEGER
+                      name: show
+                      value: '3'
+                    - type: INTEGER
+                      name: show_tags
+                      value: '3'
+                    - type: INTEGER
+                      name: tag_name_format
+                      value: '0'
+                    - type: STRING
+                      name: tags.tag.0
+                      value: component
+                    - type: INTEGER
+                      name: tags.operator.0
+                      value: '0'
+                    - type: STRING
+                      name: tags.value.0
+                      value: repocompare
+                    - type: INTEGER
+                      name: show_suppressed
+                      value: '0'
+                    - type: INTEGER
+                      name: sort_triggers
+                      value: '0'
