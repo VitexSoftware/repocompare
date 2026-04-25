@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/VitexSoftware/php-vitexsoftware-multiflexi-core/refs/heads/main/schema/application.json",
-  "schemaVersion": "3.0.0",
+  "schemaVersion": "3.3.0",
   "version": "0.1.0",
   "uuid": "6e26be00-7099-43c2-99c8-8281ec4c3d21",
   "name": {
@@ -21,36 +21,39 @@
   "executable": "repocompare",
   "environment": {
     "REPO_A": {
-      "type": "string",
-      "description": {"en": "Base URL for repo A"},
+      "type": "url",
+      "description": {"en": "Base URL for repo A", "cs": "Základní URL pro repozitář A"},
       "defval": "https://repo.vitexsoftware.com/",
       "required": false,
-      "category": "Network"
+      "category": "Other"
     },
     "REPO_B": {
-      "type": "string",
-      "description": {"en": "Base URL for repo B"},
+      "type": "url",
+      "description": {"en": "Base URL for repo B", "cs": "Základní URL pro repozitář B"},
       "defval": "https://repo.multiflexi.eu/",
       "required": false,
-      "category": "Network"
+      "category": "Other"
     },
     "DIST": {
       "type": "string",
+      "description": {"en": "Debian distribution codename (e.g. bookworm)", "cs": "Kódový název Debian distribuce (např. bookworm)"},
       "defval": "bookworm",
       "required": false,
-      "category": "Options"
+      "category": "Behavior"
     },
     "COMPONENT": {
       "type": "string",
+      "description": {"en": "Repository component (e.g. main)", "cs": "Komponenta repozitáře (např. main)"},
       "defval": "main",
       "required": false,
-      "category": "Options"
+      "category": "Behavior"
     },
     "ARCH": {
       "type": "string",
+      "description": {"en": "Target architecture (e.g. amd64)", "cs": "Cílová architektura (např. amd64)"},
       "defval": "amd64",
       "required": false,
-      "category": "Options"
+      "category": "Behavior"
     }
   }
 }
