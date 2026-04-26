@@ -1,11 +1,10 @@
 zabbix_export:
-  version: '7.0'
+  version: '8.0'
   template_groups:
-    - uuid: b4f5a6c7-d8e9-4f0a-b1c2-d3e4f5a6b7c8
+    - uuid: d2936a345f2148c2b4bfe3ea4358c8da
       name: Templates/Applications
-
   templates:
-    - uuid: a3e4f5b6-c7d8-4e9f-a0b1-c2d3e4f5a6b7
+    - uuid: 62d56e3391924e019f706c57f8b428ae
       template: RepoCompare
       name: RepoCompare
       description: |
@@ -20,32 +19,8 @@ zabbix_export:
         Set Timeout=30 in zabbix_agent2.conf (repo fetches require network I/O).
       groups:
         - name: Templates/Applications
-
-      macros:
-        - macro: '{$REPO_A}'
-          value: 'https://repo.vitexsoftware.com/'
-          description: 'Testing/staging repository base URL'
-        - macro: '{$REPO_B}'
-          value: 'https://repo.multiflexi.eu/'
-          description: 'Production repository base URL'
-        - macro: '{$COMPONENT}'
-          value: main
-          description: 'Repository component (e.g. main)'
-        - macro: '{$ARCH}'
-          value: amd64
-          description: 'Target architecture'
-        - macro: '{$REPOCOMPARE_DISTS}'
-          value: 'bookworm,trixie,forky,jammy,noble,raccoon'
-          description: 'Comma-separated list of distribution codenames to monitor'
-        - macro: '{$REPOCOMPARE_DIFF_WARN}'
-          value: '0'
-          description: 'Trigger: warn when packages with differing versions exceed this count'
-        - macro: '{$REPOCOMPARE_MISSING_B_WARN}'
-          value: '0'
-          description: 'Trigger: warn when packages missing in production exceed this count'
-
       discovery_rules:
-        - uuid: 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d
+        - uuid: a5bf017f68f54aa99af702742293ce19
           name: 'Distribution discovery'
           key: 'repocompare.dist.discovery[{$REPOCOMPARE_DISTS}]'
           delay: 1d
@@ -54,9 +29,8 @@ zabbix_export:
             Discovers distribution codenames from the {$REPOCOMPARE_DISTS} macro.
             Runs once per day since the distribution list rarely changes.
             Each discovered {#DIST} gets its own set of monitoring items.
-
           item_prototypes:
-            - uuid: 2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e
+            - uuid: e2c4217e3dbe4d0bbcba02ad5736ab8b
               name: 'RepoCompare [{#DIST}]: raw JSON result'
               key: 'repocompare.result[{$REPO_A},{$REPO_B},{#DIST},{$COMPONENT},{$ARCH}]'
               delay: 1h
@@ -72,8 +46,7 @@ zabbix_export:
                   value: repocompare
                 - tag: dist
                   value: '{#DIST}'
-
-            - uuid: 3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f
+            - uuid: cf5458f190014a63bfce44b30d53becc
               name: 'RepoCompare [{#DIST}]: packages to rebuild (different versions)'
               type: DEPENDENT
               key: 'repocompare.different_versions[{#DIST}]'
@@ -96,8 +69,33 @@ zabbix_export:
                   value: repocompare
                 - tag: dist
                   value: '{#DIST}'
-
-            - uuid: 4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a
+              trigger_prototypes:
+                - uuid: 9d3e062c02484b80a6b82a275ffc9690
+                  expression: 'nodata(/RepoCompare/repocompare.different_versions[{#DIST}],2h)=1'
+                  name: 'RepoCompare [{#DIST}]: no data for 2 hours'
+                  priority: AVERAGE
+                  description: 'The repocompare check for {#DIST} has stopped returning data. Verify repocompare is installed and the Zabbix agent UserParameter is configured correctly.'
+                  tags:
+                    - tag: component
+                      value: repocompare
+                    - tag: dist
+                      value: '{#DIST}'
+                - uuid: 0afd9b4ba66d4603a1fb8340613c694e
+                  expression: 'last(/RepoCompare/repocompare.different_versions[{#DIST}])>{$REPOCOMPARE_DIFF_WARN}'
+                  name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} package(s) need version rebuild'
+                  priority: WARNING
+                  description: |
+                    Packages exist in both repos for {#DIST} but with differing versions.
+                    Testing (Repo A) is ahead of production (Repo B) — rebuild/promotion needed.
+                    Threshold: {$REPOCOMPARE_DIFF_WARN}
+                  tags:
+                    - tag: action
+                      value: rebuild
+                    - tag: component
+                      value: repocompare
+                    - tag: dist
+                      value: '{#DIST}'
+            - uuid: c5cce02a24de42d5974e59ff28a7c8a0
               name: 'RepoCompare [{#DIST}]: packages missing in production'
               type: DEPENDENT
               key: 'repocompare.missing_in_b[{#DIST}]'
@@ -119,8 +117,23 @@ zabbix_export:
                   value: repocompare
                 - tag: dist
                   value: '{#DIST}'
-
-            - uuid: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
+              trigger_prototypes:
+                - uuid: f0e52bfd1ea847de8f09c014f7a10e22
+                  expression: 'last(/RepoCompare/repocompare.missing_in_b[{#DIST}])>{$REPOCOMPARE_MISSING_B_WARN}'
+                  name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} package(s) not yet in production'
+                  priority: WARNING
+                  description: |
+                    Packages present in testing (Repo A) for {#DIST} are completely absent from production (Repo B).
+                    These packages have never been promoted.
+                    Threshold: {$REPOCOMPARE_MISSING_B_WARN}
+                  tags:
+                    - tag: action
+                      value: promote
+                    - tag: component
+                      value: repocompare
+                    - tag: dist
+                      value: '{#DIST}'
+            - uuid: 86d52125f2ab482a9a416ca0ea479c56
               name: 'RepoCompare [{#DIST}]: packages missing in testing'
               type: DEPENDENT
               key: 'repocompare.missing_in_a[{#DIST}]'
@@ -140,8 +153,20 @@ zabbix_export:
                   value: repocompare
                 - tag: dist
                   value: '{#DIST}'
-
-            - uuid: 6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c
+              trigger_prototypes:
+                - uuid: c9d0336993574a61a106e480dbc9d346
+                  expression: 'last(/RepoCompare/repocompare.missing_in_a[{#DIST}])>0'
+                  name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} production package(s) missing from testing'
+                  priority: INFO
+                  description: |
+                    Packages in production (Repo B) for {#DIST} are absent from testing (Repo A).
+                    This may indicate packages that were removed from testing or were added directly to production.
+                  tags:
+                    - tag: component
+                      value: repocompare
+                    - tag: dist
+                      value: '{#DIST}'
+            - uuid: 1fadcd989e914810a48a825763d67a11
               name: 'RepoCompare [{#DIST}]: packages in sync'
               type: DEPENDENT
               key: 'repocompare.same_versions[{#DIST}]'
@@ -161,8 +186,7 @@ zabbix_export:
                   value: repocompare
                 - tag: dist
                   value: '{#DIST}'
-
-            - uuid: 7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d
+            - uuid: be46f5fac9b043398a77f4bae127533a
               name: 'RepoCompare [{#DIST}]: packages to rebuild (total)'
               type: DEPENDENT
               key: 'repocompare.rebuild_total[{#DIST}]'
@@ -186,14 +210,12 @@ zabbix_export:
                   value: repocompare
                 - tag: dist
                   value: '{#DIST}'
-
           graph_prototypes:
-            - uuid: 8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e
+            - uuid: 626b4c9781124c48804ecea362552b9e
               name: 'RepoCompare [{#DIST}]: rebuild backlog'
               graph_items:
-                - sortorder: '0'
+                - drawtype: FILLED_REGION
                   color: CC0000
-                  drawtype: FILLED_REGION
                   item:
                     host: RepoCompare
                     key: 'repocompare.rebuild_total[{#DIST}]'
@@ -212,66 +234,30 @@ zabbix_export:
                   item:
                     host: RepoCompare
                     key: 'repocompare.same_versions[{#DIST}]'
-
-          trigger_prototypes:
-            - uuid: 9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f
-              expression: 'last(/RepoCompare/repocompare.different_versions[{#DIST}])>{$REPOCOMPARE_DIFF_WARN}'
-              name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} package(s) need version rebuild'
-              priority: WARNING
-              description: |
-                Packages exist in both repos for {#DIST} but with differing versions.
-                Testing (Repo A) is ahead of production (Repo B) — rebuild/promotion needed.
-                Threshold: {$REPOCOMPARE_DIFF_WARN}
-              tags:
-                - tag: component
-                  value: repocompare
-                - tag: dist
-                  value: '{#DIST}'
-                - tag: action
-                  value: rebuild
-
-            - uuid: 0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a
-              expression: 'last(/RepoCompare/repocompare.missing_in_b[{#DIST}])>{$REPOCOMPARE_MISSING_B_WARN}'
-              name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} package(s) not yet in production'
-              priority: WARNING
-              description: |
-                Packages present in testing (Repo A) for {#DIST} are completely absent from production (Repo B).
-                These packages have never been promoted.
-                Threshold: {$REPOCOMPARE_MISSING_B_WARN}
-              tags:
-                - tag: component
-                  value: repocompare
-                - tag: dist
-                  value: '{#DIST}'
-                - tag: action
-                  value: promote
-
-            - uuid: 1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b
-              expression: 'last(/RepoCompare/repocompare.missing_in_a[{#DIST}])>0'
-              name: 'RepoCompare [{#DIST}]: {ITEM.LASTVALUE} production package(s) missing from testing'
-              priority: INFO
-              description: |
-                Packages in production (Repo B) for {#DIST} are absent from testing (Repo A).
-                This may indicate packages that were removed from testing or were added directly to production.
-              tags:
-                - tag: component
-                  value: repocompare
-                - tag: dist
-                  value: '{#DIST}'
-
-            - uuid: 2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c
-              expression: 'nodata(/RepoCompare/repocompare.different_versions[{#DIST}],2h)=1'
-              name: 'RepoCompare [{#DIST}]: no data for 2 hours'
-              priority: AVERAGE
-              description: 'The repocompare check for {#DIST} has stopped returning data. Verify repocompare is installed and the Zabbix agent UserParameter is configured correctly.'
-              tags:
-                - tag: component
-                  value: repocompare
-                - tag: dist
-                  value: '{#DIST}'
-
+      macros:
+        - macro: '{$ARCH}'
+          value: amd64
+          description: 'Target architecture'
+        - macro: '{$COMPONENT}'
+          value: main
+          description: 'Repository component (e.g. main)'
+        - macro: '{$REPOCOMPARE_DIFF_WARN}'
+          value: '0'
+          description: 'Trigger: warn when packages with differing versions exceed this count'
+        - macro: '{$REPOCOMPARE_DISTS}'
+          value: 'bookworm,trixie,forky,jammy,noble,raccoon'
+          description: 'Comma-separated list of distribution codenames to monitor'
+        - macro: '{$REPOCOMPARE_MISSING_B_WARN}'
+          value: '0'
+          description: 'Trigger: warn when packages missing in production exceed this count'
+        - macro: '{$REPO_A}'
+          value: 'https://repo.vitexsoftware.com/'
+          description: 'Testing/staging repository base URL'
+        - macro: '{$REPO_B}'
+          value: 'https://repo.multiflexi.eu/'
+          description: 'Production repository base URL'
       dashboards:
-        - uuid: 3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d
+        - uuid: b1c1ad6ef83644bb97c9d7bd32c80b28
           name: 'RepoCompare — Packages to Rebuild'
           pages:
             - name: 'Overview'
@@ -294,7 +280,6 @@ zabbix_export:
                       value:
                         host: RepoCompare
                         name: 'RepoCompare [{#DIST}]: rebuild backlog'
-
             - name: 'Problems'
               widgets:
                 - type: PROBLEMS
