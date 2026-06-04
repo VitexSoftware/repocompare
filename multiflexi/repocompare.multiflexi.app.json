@@ -60,7 +60,7 @@
       "description": {"en": "Path to file where JSON result is saved (stdout if empty)", "cs": "Cesta k souboru pro uložení JSON výstupu (prázdné = stdout)"},
       "defval": "",
       "required": false,
-      "category": "Output"
+      "category": "Behavior"
     },
     "REPOCOMPARE_DISTS": {
       "type": "string",
