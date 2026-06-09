@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/VitexSoftware/php-vitexsoftware-multiflexi-core/refs/heads/main/schema/application.json",
-  "schemaVersion": "3.3.0",
+  "schemaVersion": "3.4.0",
   "version": "0.1.0",
   "uuid": "6e26be00-7099-43c2-99c8-8281ec4c3d21",
   "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjgwIiBoZWlnaHQ9IjUyMCIgdmlld0JveD0iMCAwIDY4MCA1MjAiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGl0bGU+cmVwb2NvbXBhcmUgaWNvbjwvdGl0bGU+CiAgPGRlc2M+U1ZHIGljb24gZm9yIHRoZSByZXBvY29tcGFyZSB0b29sIOKAlCB0d28gRGViaWFuIEFQVCByZXBvc2l0b3JpZXMgc2lkZSBieSBzaWRlIHdpdGggYSBjb21wYXJpc29uIGFycm93IGJldHdlZW4gdGhlbSwgc2hvd2luZyBwYWNrYWdlIHZlcnNpb24gZGlmZmVyZW5jZXMgaGlnaGxpZ2h0ZWQ8L2Rlc2M+CgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjciIG1hcmtlckhlaWdodD0iNyIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPgogICAgICA8cGF0aCBkPSJNMiAxTDggNUwyIDkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY29udGV4dC1zdHJva2UiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KCiAgPCEtLSDilIDilIAgUmVwbyBBIChsZWZ0KSDilIDilIAgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSI2MCIgeT0iODAiIHdpZHRoPSIyMjAiIGhlaWdodD0iMzQwIiByeD0iMTQiIGZpbGw9IiNFNkYxRkIiIHN0cm9rZT0iIzE4NUZBNSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICAgIDxyZWN0IHg9IjYwIiB5PSI4MCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSI1MiIgcng9IjE0IiBmaWxsPSIjMTg1RkE1Ii8+CiAgICA8cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIyIiBmaWxsPSIjMTg1RkE1Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIiB4PSIxNzAiIHk9IjExMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+cmVwby1hPC90ZXh0PgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0iI0I1RDRGNCIgeD0iMTcwIiB5PSIxMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmJvb2t3b3JtIMK3IG1haW4gwrcgYW1kNjQ8L3RleHQ+CgogICAgPHJlY3QgeD0iNzYiIHk9IjE0OCIgd2lkdGg9IjE4OCIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI0I1RDRGNCIgc3Ryb2tlLXdpZHRoPSIwLjgiLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwQzQ0N0MiIHg9IjkwIiB5PSIxNjgiPmxpYnNzbDwvdGV4dD4KICAgIDxyZWN0IHg9IjE4OCIgeT0iMTU0IiB3aWR0aD0iNjQiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjRUFGM0RFIiBzdHJva2U9IiMzQjZEMTEiIHN0cm9rZS13aWR0aD0iMC43Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMjc1MDBBIiB4PSIyMjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+My4wLjExPC90ZXh0PgoKICAgIDxyZWN0IHg9Ijc2IiB5PSIxOTAiIHdpZHRoPSIxODgiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNCNUQ0RjQiIHN0cm9rZS13aWR0aD0iMC44Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEM0NDdDIiB4PSI5MCIgeT0iMjEwIj5jdXJsPC90ZXh0PgogICAgPHJlY3QgeD0iMTg4IiB5PSIxOTYiIHdpZHRoPSI2NCIgaGVpZ2h0PSIyMCIgcng9IjQiIGZpbGw9IiNFQUYzREUiIHN0cm9rZT0iIzNCNkQxMSIgc3Ryb2tlLXdpZHRoPSIwLjciLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyNzUwMEEiIHg9IjIyMCIgeT0iMjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43Ljg4LjE8L3RleHQ+CgogICAgPHJlY3QgeD0iNzYiIHk9IjIzMiIgd2lkdGg9IjE4OCIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiNGQUVFREEiIHN0cm9rZT0iI0JBNzUxNyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2MzM4MDYiIHg9IjkwIiB5PSIyNTIiPnB5dGhvbjM8L3RleHQ+CiAgICA8cmVjdCB4PSIxODgiIHk9IjIzOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0VGOUYyNyIgc3Ryb2tlPSIjODU0RjBCIiBzdHJva2Utd2lkdGg9IjAuNyIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzQxMjQwMiIgeD0iMjIwIiB5PSIyNTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMuMTEuMjwvdGV4dD4KCiAgICA8cmVjdCB4PSI3NiIgeT0iMjc0IiB3aWR0aD0iMTg4IiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjQjVENEY0IiBzdHJva2Utd2lkdGg9IjAuOCIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBDNDQ3QyIgeD0iOTAiIHk9IjI5NCI+Z2l0PC90ZXh0PgogICAgPHJlY3QgeD0iMTg4IiB5PSIyODAiIHdpZHRoPSI2NCIgaGVpZ2h0PSIyMCIgcng9IjQiIGZpbGw9IiNFQUYzREUiIHN0cm9rZT0iIzNCNkQxMSIgc3Ryb2tlLXdpZHRoPSIwLjciLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyNzUwMEEiIHg9IjIyMCIgeT0iMjk0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yLjM5LjI8L3RleHQ+CgogICAgPHJlY3QgeD0iNzYiIHk9IjMxNiIgd2lkdGg9IjE4OCIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiNGQ0VCRUIiIHN0cm9rZT0iI0EzMkQyRCIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiNBMzJEMkQiIHg9IjkwIiB5PSIzMzYiPnZpbS1ub3g8L3RleHQ+CiAgICA8cmVjdCB4PSIxODgiIHk9IjMyMiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0UyNEI0QSIgc3Ryb2tlPSIjNzkxRjFGIiBzdHJva2Utd2lkdGg9IjAuNyIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgeD0iMjIwIiB5PSIzMzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjkuMC4xPC90ZXh0PgoKICAgIDxyZWN0IHg9Ijc2IiB5PSIzNTgiIHdpZHRoPSIxODgiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNCNUQ0RjQiIHN0cm9rZS13aWR0aD0iMC44Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEM0NDdDIiB4PSI5MCIgeT0iMzc4Ij53Z2V0PC90ZXh0PgogICAgPHJlY3QgeD0iMTg4IiB5PSIzNjQiIHdpZHRoPSI2NCIgaGVpZ2h0PSIyMCIgcng9IjQiIGZpbGw9IiNFQUYzREUiIHN0cm9rZT0iIzNCNkQxMSIgc3Ryb2tlLXdpZHRoPSIwLjciLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyNzUwMEEiIHg9IjIyMCIgeT0iMzc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xLjIxLjM8L3RleHQ+CiAgPC9nPgoKICA8IS0tIOKUgOKUgCBSZXBvIEIgKHJpZ2h0KSDilIDilIAgLS0+CiAgPGc+CiAgICA8cmVjdCB4PSI0MDAiIHk9IjgwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjM0MCIgcng9IjE0IiBmaWxsPSIjRTFGNUVFIiBzdHJva2U9IiMwRjZFNTYiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICA8cmVjdCB4PSI0MDAiIHk9IjgwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjUyIiByeD0iMTQiIGZpbGw9IiMwRjZFNTYiLz4KICAgIDxyZWN0IHg9IjQwMCIgeT0iMTEwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIyIiBmaWxsPSIjMEY2RTU2Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIiB4PSI1MTAiIHk9IjExMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+cmVwby1iPC90ZXh0PgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzlGRTFDQiIgeD0iNTEwIiB5PSIxMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmJvb2t3b3JtIMK3IG1haW4gwrcgYW1kNjQ8L3RleHQ+CgogICAgPHJlY3QgeD0iNDE2IiB5PSIxNDgiIHdpZHRoPSIxODgiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiM5RkUxQ0IiIHN0cm9rZS13aWR0aD0iMC44Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBmaWxsPSIjMDg1MDQxIiB4PSI0MzAiIHk9IjE2OCI+bGlic3NsPC90ZXh0PgogICAgPHJlY3QgeD0iNTI4IiB5PSIxNTQiIHdpZHRoPSI2NCIgaGVpZ2h0PSIyMCIgcng9IjQiIGZpbGw9IiNFQUYzREUiIHN0cm9rZT0iIzNCNkQxMSIgc3Ryb2tlLXdpZHRoPSIwLjciLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyNzUwMEEiIHg9IjU2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zLjAuMTE8L3RleHQ+CgogICAgPHJlY3QgeD0iNDE2IiB5PSIxOTAiIHdpZHRoPSIxODgiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiM5RkUxQ0IiIHN0cm9rZS13aWR0aD0iMC44Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBmaWxsPSIjMDg1MDQxIiB4PSI0MzAiIHk9IjIxMCI+Y3VybDwvdGV4dD4KICAgIDxyZWN0IHg9IjUyOCIgeT0iMTk2IiB3aWR0aD0iNjQiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjRUFGM0RFIiBzdHJva2U9IiMzQjZEMTEiIHN0cm9rZS13aWR0aD0iMC43Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMjc1MDBBIiB4PSI1NjAiIHk9IjIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Ny44OC4xPC90ZXh0PgoKICAgIDxyZWN0IHg9IjQxNiIgeT0iMjMyIiB3aWR0aD0iMTg4IiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iI0ZBRUVEQSIgc3Ryb2tlPSIjQkE3NTE3IiBzdHJva2Utd2lkdGg9IjEuMiIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzYzMzgwNiIgeD0iNDMwIiB5PSIyNTIiPnB5dGhvbjM8L3RleHQ+CiAgICA8cmVjdCB4PSI1MjgiIHk9IjIzOCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0VGOUYyNyIgc3Ryb2tlPSIjODU0RjBCIiBzdHJva2Utd2lkdGg9IjAuNyIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzQxMjQwMiIgeD0iNTYwIiB5PSIyNTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMuMTIuMDwvdGV4dD4KCiAgICA8cmVjdCB4PSI0MTYiIHk9IjI3NCIgd2lkdGg9IjE4OCIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzlGRTFDQiIgc3Ryb2tlLXdpZHRoPSIwLjgiLz4KICAgIDx0ZXh0IGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwODUwNDEiIHg9IjQzMCIgeT0iMjk0Ij5naXQ8L3RleHQ+CiAgICA8cmVjdCB4PSI1MjgiIHk9IjI4MCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI0VBRjNERSIgc3Ryb2tlPSIjM0I2RDExIiBzdHJva2Utd2lkdGg9IjAuNyIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzI3NTAwQSIgeD0iNTYwIiB5PSIyOTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjIuMzkuMjwvdGV4dD4KCiAgICA8cmVjdCB4PSI0MTYiIHk9IjMxNiIgd2lkdGg9IjE4OCIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiNGQ0VCRUIiIHN0cm9rZT0iI0EzMkQyRCIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjUgMyIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMSIgZmlsbD0iI0EzMkQyRCIgeD0iNDMwIiB5PSIzMzYiPnZpbS1ub3g8L3RleHQ+CiAgICA8cmVjdCB4PSI1MjgiIHk9IjMyMiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjRTI0QjRBIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1kYXNoYXJyYXk9IjQgMyIvPgogICAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI0EzMkQyRCIgeD0iNTYwIiB5PSIzMzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1pc3Npbmc8L3RleHQ+CgogICAgPHJlY3QgeD0iNDE2IiB5PSIzNTgiIHdpZHRoPSIxODgiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiM5RkUxQ0IiIHN0cm9rZS13aWR0aD0iMC44Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjExIiBmaWxsPSIjMDg1MDQxIiB4PSI0MzAiIHk9IjM3OCI+d2dldDwvdGV4dD4KICAgIDxyZWN0IHg9IjUyOCIgeT0iMzY0IiB3aWR0aD0iNjQiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjRUFGM0RFIiBzdHJva2U9IiMzQjZEMTEiIHN0cm9rZS13aWR0aD0iMC43Ii8+CiAgICA8dGV4dCBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMjc1MDBBIiB4PSI1NjAiIHk9IjM3OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MS4yMS4zPC90ZXh0PgogIDwvZz4KCiAgPCEtLSDilIDilIAgQ29tcGFyaXNvbiBhcnJvd3Mg4pSA4pSAIC0tPgogIDxsaW5lIHgxPSIyNjciIHkxPSIyNDgiIHgyPSIzOTciIHkyPSIyNDgiIHN0cm9rZT0iI0VGOUYyNyIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93KSIgbWFya2VyLXN0YXJ0PSJ1cmwoI2Fycm93KSIvPgogIDxsaW5lIHgxPSIyNjciIHkxPSIzMzIiIHgyPSIzOTciIHkyPSIzMzIiIHN0cm9rZT0iI0UyNEI0QSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSI2IDQiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPGxpbmUgeDE9IjI2NyIgeTE9IjE2NCIgeDI9IjM5NyIgeTI9IjE2NCIgc3Ryb2tlPSIjQjRCMkE5IiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPgogIDxsaW5lIHgxPSIyNjciIHkxPSIyMDYiIHgyPSIzOTciIHkyPSIyMDYiIHN0cm9rZT0iI0I0QjJBOSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI0IDQiLz4KICA8bGluZSB4MT0iMjY3IiB5MT0iMjkwIiB4Mj0iMzk3IiB5Mj0iMjkwIiBzdHJva2U9IiNCNEIyQTkiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iNCA0Ii8+CiAgPGxpbmUgeDE9IjI2NyIgeTE9IjM3NCIgeDI9IjM5NyIgeTI9IjM3NCIgc3Ryb2tlPSIjQjRCMkE5IiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPgoKICA8IS0tIOKUgOKUgCBMZWdlbmQg4pSA4pSAIC0tPgogIDxyZWN0IHg9IjE4NiIgeT0iNDUwIiB3aWR0aD0iMzEwIiBoZWlnaHQ9IjUyIiByeD0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0QzRDFDNyIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGxpbmUgeDE9IjIwNCIgeTE9IjQ3MiIgeDI9IjIyOCIgeTI9IjQ3MiIgc3Ryb2tlPSIjQjRCMkE5IiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWRhc2hhcnJheT0iNCA0Ii8+CiAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzVGNUU1QSIgeD0iMjM0IiB5PSI0NzYiPnNhbWU8L3RleHQ+CiAgPGxpbmUgeDE9IjI3NiIgeTE9IjQ3MiIgeDI9IjMwMCIgeTI9IjQ3MiIgc3Ryb2tlPSIjRUY5RjI3IiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIiBtYXJrZXItc3RhcnQ9InVybCgjYXJyb3cpIi8+CiAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzVGNUU1QSIgeD0iMzA2IiB5PSI0NzYiPnZlcnNpb24gZGlmZjwvdGV4dD4KICA8bGluZSB4MT0iMzgwIiB5MT0iNDcyIiB4Mj0iNDAwIiB5Mj0iNDcyIiBzdHJva2U9IiNFMjRCNEEiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtZGFzaGFycmF5PSI1IDMiIG1hcmtlci1lbmQ9InVybCgjYXJyb3cpIi8+CiAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzVGNUU1QSIgeD0iNDA2IiB5PSI0NzYiPm1pc3Npbmc8L3RleHQ+CiAgPHRleHQgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSI5IiBmaWxsPSIjODg4NzgwIiB4PSIzNDEiIHk9IjQ5NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+cmVwb2NvbXBhcmUgwrcgVml0ZXhTb2Z0d2FyZTwvdGV4dD4KPC9zdmc+Cg==",
@@ -20,52 +20,80 @@
   "requirements": [],
   "homepage": "https://github.com/VitexSoftware/repocompare",
   "executable": "repocompare",
+  "events": {
+    "emits": {
+      "report.generated": {
+        "description": "A report was generated"
+      }
+    }
+  },
   "environment": {
     "REPO_A": {
       "type": "url",
-      "description": {"en": "Base URL for repo A", "cs": "Základní URL pro repozitář A"},
+      "description": {
+        "en": "Base URL for repo A",
+        "cs": "Základní URL pro repozitář A"
+      },
       "defval": "https://repo.vitexsoftware.com/",
       "required": false,
       "category": "Other"
     },
     "REPO_B": {
       "type": "url",
-      "description": {"en": "Base URL for repo B", "cs": "Základní URL pro repozitář B"},
+      "description": {
+        "en": "Base URL for repo B",
+        "cs": "Základní URL pro repozitář B"
+      },
       "defval": "https://repo.multiflexi.eu/",
       "required": false,
       "category": "Other"
     },
     "DIST": {
       "type": "string",
-      "description": {"en": "Debian distribution codename (e.g. bookworm)", "cs": "Kódový název Debian distribuce (např. bookworm)"},
+      "description": {
+        "en": "Debian distribution codename (e.g. bookworm)",
+        "cs": "Kódový název Debian distribuce (např. bookworm)"
+      },
       "defval": "bookworm",
       "required": false,
       "category": "Behavior"
     },
     "COMPONENT": {
       "type": "string",
-      "description": {"en": "Repository component (e.g. main)", "cs": "Komponenta repozitáře (např. main)"},
+      "description": {
+        "en": "Repository component (e.g. main)",
+        "cs": "Komponenta repozitáře (např. main)"
+      },
       "defval": "main",
       "required": false,
       "category": "Behavior"
     },
     "ARCH": {
       "type": "string",
-      "description": {"en": "Target architecture (e.g. amd64)", "cs": "Cílová architektura (např. amd64)"},
+      "description": {
+        "en": "Target architecture (e.g. amd64)",
+        "cs": "Cílová architektura (např. amd64)"
+      },
       "defval": "amd64",
       "required": false,
       "category": "Behavior"
     },
     "RESULT_FILE": {
       "type": "string",
-      "description": {"en": "Path to file where JSON result is saved (stdout if empty)", "cs": "Cesta k souboru pro uložení JSON výstupu (prázdné = stdout)"},
+      "description": {
+        "en": "Path to file where JSON result is saved (stdout if empty)",
+        "cs": "Cesta k souboru pro uložení JSON výstupu (prázdné = stdout)"
+      },
       "defval": "",
       "required": false,
       "category": "Behavior"
     },
     "REPOCOMPARE_DISTS": {
       "type": "string",
-      "description": {"en": "Space or comma-separated list of distribution codenames to compare (used by Zabbix LLD discovery)", "cs": "Mezerami nebo čárkami oddělený seznam kódových názvů distribucí pro porovnání (používá Zabbix LLD discovery)"},
+      "description": {
+        "en": "Space or comma-separated list of distribution codenames to compare (used by Zabbix LLD discovery)",
+        "cs": "Mezerami nebo čárkami oddělený seznam kódových názvů distribucí pro porovnání (používá Zabbix LLD discovery)"
+      },
       "defval": "bookworm trixie forky jammy noble raccoon",
       "required": false,
       "category": "Behavior"
