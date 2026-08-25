@@ -80,6 +80,7 @@
     },
     "RESULT_FILE": {
       "type": "string",
+      "default": "repocompare.json",
       "description": {
         "en": "Path to file where JSON result is saved (stdout if empty)",
         "cs": "Cesta k souboru pro uložení JSON výstupu (prázdné = stdout)"
@@ -98,5 +99,19 @@
       "required": false,
       "category": "Behavior"
     }
-  }
+  },
+  "artifacts": [
+    {
+      "name": {
+        "cs": "Report",
+        "en": "Report"
+      },
+      "type": "file",
+      "path": "repocompare.json$",
+      "description": {
+        "en": "Stauses of Versions",
+        "cs": "Stavy verzí"
+      }
+    }
+   ]
 }
